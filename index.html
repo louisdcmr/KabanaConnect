@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KabanaConnect</title>
+    <title>KabanaConnect - Domotique & Gestion de Domotique</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -205,10 +205,12 @@
 <body>
     <header>
         <div class="logo">
-            <img src="logo.png" alt="KabanaConnect Logo">
+            <img src="logo.jpg" alt="KabanaConnect Logo">
+            <span>KabanaConnect</span>
         </div>
         <nav>
             <ul>
+                <li><a href="#about">À Propos</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -246,10 +248,10 @@
     <section id="contact">
         <h2>Contactez-nous</h2>
         <p>Pour toute question ou demande d'information, n'hésitez pas à nous contacter via le formulaire ci-dessous.</p>
-        <form>
-            <input type="text" name="name" placeholder="Votre nom" required>
-            <input type="email" name="email" placeholder="Votre email" required>
-            <textarea name="message" placeholder="Votre message" required></textarea>
+        <form onsubmit="return sendEmail()">
+            <input type="text" id="name" name="name" placeholder="Votre nom" required>
+            <input type="email" id="email" name="email" placeholder="Votre email" required>
+            <textarea id="message" name="message" placeholder="Votre message" required></textarea>
             <button type="submit">Envoyer</button>
         </form>
     </section>
@@ -257,5 +259,293 @@
     <footer>
         <p>&copy; 2024 KabanaConnect. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        function sendEmail() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const mailtoLink = `mailto:contact@kabanaconnect.com?subject=${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AMail Client: ${encodeURIComponent(email)}`;
+
+            window.location.href = mailtoLink;
+            return false;
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KabanaConnect - Domotique & Gestion de Domotique</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1f2937;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            background-color: #3b82f6;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul li a:hover {
+            background-color: #2563eb;
+            transform: translateY(-3px);
+        }
+
+        #hero {
+            background: linear-gradient(135deg, #4f46e5, #3b82f6);
+            color: #fff;
+            padding: 120px 20px;
+            text-align: center;
+            clip-path: ellipse(75% 100% at center top);
+        }
+
+        #hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        #hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+        }
+
+        #hero .cta-button {
+            background-color: #f59e0b;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        #hero .cta-button:hover {
+            background-color: #d97706;
+        }
+
+        #features {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        #features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #1f2937;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            background-color: #f3f4f6;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #3b82f6;
+        }
+
+        #about, #contact {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        #about {
+            background-color: #1f2937;
+            color: #fff;
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #1f2937;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        form input, form textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #d1d5db;
+            font-size: 1rem;
+        }
+
+        form button {
+            background-color: #3b82f6;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: #2563eb;
+        }
+
+        footer {
+            background-color: #1f2937;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="KabanaConnect Logo">
+            <span>KabanaConnect</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>Bienvenue sur KabanaConnect</h1>
+        <p>La solution complète pour la gestion de votre domotique.</p>
+        <a href="#about" class="cta-button">En savoir plus</a>
+    </section>
+
+    <section id="features">
+        <h2>Fonctionnalités</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h3>Contrôle à distance</h3>
+                <p>Gérez vos appareils domestiques où que vous soyez, avec une interface conviviale et sécurisée.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Automatisation</h3>
+                <p>Programmez des scénarios pour automatiser votre maison et simplifier votre quotidien.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Intégration avec Alexa & Google Home</h3>
+                <p>Contrôlez votre maison avec votre voix grâce à une intégration fluide avec les assistants vocaux.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>À Propos de KabanaConnect</h2>
+        <p>KabanaConnect est une solution innovante conçue pour rendre votre maison plus intelligente et plus confortable. Avec nos services de domotique, vous pouvez gérer tous vos appareils domestiques à partir d'une seule plateforme, qu'il s'agisse de l'éclairage, du chauffage, ou de la sécurité.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contactez-nous</h2>
+        <p>Pour toute question ou demande d'information, n'hésitez pas à nous contacter via le formulaire ci-dessous.</p>
+        <form onsubmit="return sendEmail()">
+            <input type="text" id="name" name="name" placeholder="Votre nom" required>
+            <input type="email" id="email" name="email" placeholder="Votre email" required>
+            <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 KabanaConnect. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        function sendEmail() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const mailtoLink = `mailto:contact@kabanaconnect.com?subject=${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AMail Client: ${encodeURIComponent(email)}`;
+
+            window.location.href = mailtoLink;
+            return false;
+        }
+    </script>
 </body>
 </html>
